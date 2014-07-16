@@ -1,0 +1,22 @@
+{
+  "instance_id": "web1",
+  "services": {
+    "web_http_service": {
+      "host": "127.0.0.1",
+      "port": 80,
+      "reporter_type": "zookeeper",
+      "zk_hosts": ["localhost:2181"],
+      "zk_path": "/nerve/services/your_http_service/services",
+      "check_interval": 2,
+      "checks": [
+        {
+          "type": "http",
+          "uri": "/health",
+          "timeout": 0.2,
+          "rise": 3,
+          "fall": 2
+        }
+      ]
+    }
+  }
+}
