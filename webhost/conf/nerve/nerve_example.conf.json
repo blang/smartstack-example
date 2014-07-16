@@ -5,8 +5,8 @@
       "host": "127.0.0.1",
       "port": 80,
       "reporter_type": "zookeeper",
-      "zk_hosts": ["localhost:2181"],
-      "zk_path": "/nerve/services/your_http_service/services",
+      "zk_hosts": ["smartstackzookeeper:2181"],
+      "zk_path": "/nerve/services/http_service/services",
       "check_interval": 2,
       "checks": [
         {
