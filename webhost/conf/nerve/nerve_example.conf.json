@@ -6,7 +6,7 @@
       "port": 80,
       "reporter_type": "zookeeper",
       "zk_hosts": ["smartstackzookeeper:2181"],
-      "zk_path": "/nerve/services/http_service/services",
+      "zk_path": "/nerve/services/http_frontend/services",
       "check_interval": 2,
       "checks": [
         {
