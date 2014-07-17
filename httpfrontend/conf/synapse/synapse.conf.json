@@ -1,6 +1,6 @@
 {
   "services": {
-    "webfrontend1": {
+    "httpfrontend1": {
       "default_servers": [],
       "discovery": {
         "method": "zookeeper",
