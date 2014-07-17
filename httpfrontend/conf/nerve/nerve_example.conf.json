@@ -1,7 +1,7 @@
 {
-  "instance_id": "web1",
+  "instance_id": "httpfrontend1",
   "services": {
-    "web_http_service": {
+    "webfrontend": {
       "host": "127.0.0.1",
       "port": 80,
       "reporter_type": "zookeeper",

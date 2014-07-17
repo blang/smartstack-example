@@ -1,6 +1,6 @@
 {
   "services": {
-    "httpfrontend1": {
+    "httpfrontend": {
       "default_servers": [],
       "discovery": {
         "method": "zookeeper",
@@ -18,7 +18,26 @@
           "http-check expect string OK"
         ]
       }
-    }
+    },
+    "httpservice": {
+      "default_servers": [],
+      "discovery": {
+        "method": "zookeeper",
+        "path": "/nerve/services/http_service/services",
+        "hosts": [
+          "192.168.0.131:2181"
+        ]
+      },
+      "haproxy": {
+        "port": 3213,
+        "server_options": "check inter 2s rise 3 fall 2",
+        "listen": [
+          "mode http",
+          "option httpchk /health",
+          "http-check expect string OK"
+        ]
+      }
+    },
   },
   "haproxy": {
     "reload_command": "supervisorctl restart haproxy",

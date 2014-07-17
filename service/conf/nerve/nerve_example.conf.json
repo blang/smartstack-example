@@ -1,0 +1,22 @@
+{
+  "instance_id": "service1",
+  "services": {
+    "web_http_service": {
+      "host": "127.0.0.1",
+      "port": 9000,
+      "reporter_type": "zookeeper",
+      "zk_hosts": ["smartstackzookeeper:2181"],
+      "zk_path": "/nerve/services/http_service/services",
+      "check_interval": 2,
+      "checks": [
+        {
+          "type": "http",
+          "uri": "/health",
+          "timeout": 0.2,
+          "rise": 3,
+          "fall": 2
+        }
+      ]
+    }
+  }
+}
