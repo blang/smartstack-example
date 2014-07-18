@@ -29,7 +29,7 @@
         ]
       },
       "haproxy": {
-        "port": 3213,
+        "port": 9000,
         "server_options": "check inter 2s rise 3 fall 2",
         "listen": [
           "mode http",
