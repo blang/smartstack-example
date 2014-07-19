@@ -6,7 +6,7 @@
         "method": "zookeeper",
         "path": "/nerve/services/http_service/services",
         "hosts": [
-          "192.168.0.131:2181"
+          "$SMARTS_ZOOKEEPER"
         ]
       },
       "haproxy": {
@@ -25,7 +25,7 @@
         "method": "zookeeper",
         "path": "/nerve/services/http_frontend/services",
         "hosts": [
-          "192.168.0.131:2181"
+          "$SMARTS_ZOOKEEPER"
         ]
       },
       "haproxy": {

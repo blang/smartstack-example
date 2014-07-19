@@ -1,0 +1,22 @@
+{
+  "instance_id": "$SMARTS_INSTANCE_ID",
+  "services": {
+    "webfrontend": {
+      "host": "$SMARTS_PUBLIC_IP",
+      "port": $SMARTS_PUBLIC_PORT_80,
+      "reporter_type": "zookeeper",
+      "zk_hosts": ["$SMARTS_ZOOKEEPER"],
+      "zk_path": "/nerve/services/http_frontend/services",
+      "check_interval": 2,
+      "checks": [
+        {
+          "type": "http",
+          "uri": "/health",
+          "timeout": 0.2,
+          "rise": 3,
+          "fall": 2
+        }
+      ]
+    }
+  }
+}

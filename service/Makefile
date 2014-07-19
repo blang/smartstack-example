@@ -1,10 +1,11 @@
 NS = blang
 REPO = smartstack-service
-NAME = smartstack-service
-
-PORTS = -p 2223:22 -p 9000:9000 -p 3215:3215
+INSTANCE_ID = defaulinstance
+PUBLIC_PORT = 9000
+NAME = smartstack-service-$(INSTANCE_ID)
+PORTS = -p $(PUBLIC_PORT):9000
 VOLUMES = -v /tmp/weblogs:/var/log/supervisor
-ENV = -e PUBLIC_IP=192.168.0.131 -e PUBLIC_PORT_9000=9000
+ENV = -e SMARTS_PUBLIC_IP=192.168.0.32 -e SMARTS_PUBLIC_PORT_9000=$(PUBLIC_PORT) -e SMARTS_ZOOKEEPER=192.168.0.32:2181 -e SMARTS_INSTANCE_ID=$(INSTANCE_ID)
 
 .PHONY: build shell run start stop stoprm rm
 
@@ -14,7 +15,7 @@ build: buildhttpservice
 buildhttpservice: httpservice/httpservice
 
 httpservice/httpservice: httpservice/main.go
-	cd httpserver && go build .
+	cd httpservice && go build .
 
 shell:
 	docker run --rm --name $(NAME) -i -t $(PORTS) $(VOLUMES) $(ENV) $(NS)/$(REPO) /bin/bash
@@ -25,10 +26,10 @@ run:
 start:
 	docker run -d --name $(NAME) $(PORTS) $(VOLUMES) $(ENV) $(NS)/$(REPO)
 
-stop:
-	docker stop $(NAME)
+stop: stopinst rm 
 
-stoprm: stop rm 
+stopinst:
+	docker stop $(NAME)
 
 rm:
 	docker rm $(NAME)

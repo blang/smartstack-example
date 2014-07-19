@@ -54,6 +54,9 @@ ADD conf/synapse/synapse.conf.json /etc/
 # Add haproxy config
 ADD conf/haproxy /etc/haproxy/
 
+# Add scripts
+ADD bin /usr/local/bin/
+
 # Add Volumes
 VOLUME ["/var/log/supervisor"]
 
